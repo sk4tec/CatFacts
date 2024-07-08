@@ -43,26 +43,39 @@ struct ContentView: View {
     @StateObject var vm = ViewModel()
 
     var body: some View {
-        VStack {
-            HStack {
-                Button("Previous") {
-                    Task { await vm.getPrevious() }
+        NavigationStack {
+            VStack {
+                HStack {
+                    Button("Previous") {
+                        Task { await vm.getPrevious() }
+                    }
+                    Spacer()
+                    Button("Next") {
+                        Task { await vm.getNext() }
+                    }
                 }
-                Spacer()
-                Button("Next") {
-                    Task { await vm.getNext() }
+                List {
+                    ForEach(vm.cats) { cat in
+                        NavigationLink {
+                            CatDetailView()
+                        } label: {
+                            ExtractedView(cat: cat)
+                        }
+                    }
                 }
             }
-            List {
-                ForEach(vm.cats) { cat in
-                    ExtractedView(cat: cat)
-                }
+            .padding(.horizontal, 16)
+            .task {
+                await vm.load()
             }
+            .navigationTitle("Cat Facts")
         }
-        .padding()
-        .task {
-            await vm.load()
-        }
+    }
+}
+
+struct CatDetailView: View {
+    var body: some View {
+        Text("Detail View")
     }
 }
 
