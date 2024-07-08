@@ -24,12 +24,13 @@ struct CatMasterView: View {
                 }
                 List {
                     ForEach(vm.cats) { cat in
-                        NavigationLink {
-                            CatDetailView(cat: cat)
-                        } label: {
+                        NavigationLink(value: cat) {
                             CatListView(cat: cat)
                         }
                     }
+                }
+                .navigationDestination(for: CatModel.self) { cat in
+                    CatDetailView(cat: cat)
                 }
             }
             .padding(.horizontal, 16)

@@ -11,12 +11,14 @@ struct CatDetailView: View {
     var cat: CatModel
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(cat.breed)
-            Text(cat.country)
-            Text(cat.origin)
-            Text(cat.coat)
-            Text(cat.pattern)
+        VStack {
+            List {
+                Text(cat.breed)
+                Text(cat.country)
+                Text(cat.origin)
+                Text(cat.coat)
+                Text(cat.pattern)
+            }
         }
     }
 }

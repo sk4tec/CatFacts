@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CatModel: Identifiable {
+struct CatModel: Identifiable, Hashable {
     let id = UUID()
     let breed, country, origin, coat: String
     let pattern: String
