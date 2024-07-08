@@ -10,10 +10,13 @@ import SwiftUI
 struct CatFactResponse: Codable {
     let currentPage: Int
     let data: [Cats]
+    let nextPageURL, prevPageURL: String?
 
     enum CodingKeys: String, CodingKey {
         case currentPage = "current_page"
         case data
+        case nextPageURL = "next_page_url"
+        case prevPageURL = "prev_page_url"
     }
 }
 
@@ -37,11 +40,16 @@ struct CatModel: Identifiable {
 }
 
 struct ContentView: View {
-    @State var pageNumber: Int = 1
     @StateObject var vm = ViewModel()
 
     var body: some View {
         VStack {
+            Button("Next") {
+                Task { await vm.getNext() }
+            }
+            Button("Previous") {
+                Task { await vm.getPrevious() }
+            }
             List {
                 ForEach(vm.cats) { cat in
                     Text(cat.breed)

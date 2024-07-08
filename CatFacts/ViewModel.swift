@@ -8,23 +8,47 @@
 import Foundation
 
 class ViewModel: ObservableObject {
+    // MARK: Published
     @Published var cats = [CatModel]()
-    @Published var pageNumber: Int = 1
+    @Published var page = ""
 
+    // MARK: State
+    var next: String?
+    var previous: String?
+
+    public init() {
+        self.page = "https://catfact.ninja/breeds?page=0"
+    }
+
+    @MainActor
     func load() async {
         do {
-            self.cats = try await getCats(page: pageNumber)
+            self.cats = try await getCats(urlPage: page)
         } catch {
             print("Error \(error)")
         }
     }
 
-    func getCats(page: Int = 1) async throws -> [CatModel] {
-        let pageNumber = String(page)
-        let baseUrlString = "https://catfact.ninja/breeds"
-        let paginationString = "?page=\(pageNumber)"
+    func getPrevious() async {
+        guard let previous = previous else { return }
+        do {
+            self.cats = try await getCats(urlPage: previous)
+        } catch {
+            print("Error \(error)")
+        }
+    }
 
-        guard let url = URL(string: baseUrlString + paginationString) else { return [] }
+    func getNext() async {
+        guard let next = next else { return }
+        do {
+            self.cats = try await getCats(urlPage: next)
+        } catch {
+            print("Error \(error)")
+        }
+    }
+
+    func getCats(urlPage: String) async throws -> [CatModel] {
+        guard let url = URL(string: urlPage) else { return [] }
 
         let (data, response) = try await URLSession.shared.data(from: url)
 
@@ -35,6 +59,9 @@ class ViewModel: ObservableObject {
         let cats = catFactsResponse.data.map { cat in
             CatModel(breed: cat.breed, country: cat.country, origin: cat.origin, coat: cat.coat, pattern: cat.pattern)
         }
+        
+        self.next = catFactsResponse.nextPageURL
+        self.previous = catFactsResponse.prevPageURL
 
         return cats
     }
