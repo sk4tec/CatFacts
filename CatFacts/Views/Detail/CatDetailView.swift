@@ -13,11 +13,11 @@ struct CatDetailView: View {
     var body: some View {
         VStack {
             List {
-                Text(cat.breed)
-                Text(cat.country)
-                Text(cat.origin)
-                Text(cat.coat)
-                Text(cat.pattern)
+                Text("Breed: \(cat.breed)")
+                Text("Country: \(cat.country)")
+                Text("Origin: \(cat.origin)")
+                Text("Coat: \(cat.coat)")
+                Text("Pattern: \(cat.pattern)")
             }
         }
     }
