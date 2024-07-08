@@ -25,7 +25,7 @@ struct CatMasterView: View {
                 List {
                     ForEach(vm.cats) { cat in
                         NavigationLink {
-                            CatDetailView()
+                            CatDetailView(cat: cat)
                         } label: {
                             CatListView(cat: cat)
                         }

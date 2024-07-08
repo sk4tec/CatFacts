@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct CatDetailView: View {
+    var cat: CatModel
+
     var body: some View {
-        Text("Detail View")
+        VStack(alignment: .leading) {
+            Text(cat.breed)
+            Text(cat.country)
+            Text(cat.origin)
+            Text(cat.coat)
+            Text(cat.pattern)
+        }
     }
 }
 
 #Preview {
-    CatDetailView()
+    CatDetailView(cat: .init(breed: "Ragamuffin", country: "USA", origin: "Natural", coat: "Short", pattern: "All"))
 }
