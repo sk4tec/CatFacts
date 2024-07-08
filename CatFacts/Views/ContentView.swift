@@ -27,7 +27,7 @@ struct CatMasterView: View {
                         NavigationLink {
                             CatDetailView()
                         } label: {
-                            ExtractedView(cat: cat)
+                            CatListView(cat: cat)
                         }
                     }
                 }
@@ -41,24 +41,6 @@ struct CatMasterView: View {
     }
 }
 
-struct CatDetailView: View {
-    var body: some View {
-        Text("Detail View")
-    }
-}
-
 #Preview {
     CatMasterView()
-}
-
-struct ExtractedView: View {
-    let cat: CatModel
-
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(cat.breed)
-                .font(.title3)
-            Text(cat.coat)
-        }
-    }
 }

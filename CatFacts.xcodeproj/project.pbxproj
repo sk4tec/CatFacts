@@ -15,6 +15,8 @@
 		FBDC93E12C3BFA7300A4013C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93E02C3BFA7300A4013C /* Network.swift */; };
 		FBDC93E42C3C011B00A4013C /* CatResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93E32C3C011B00A4013C /* CatResponse.swift */; };
 		FBDC93E72C3C018200A4013C /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93E62C3C018200A4013C /* CatModel.swift */; };
+		FBDC93E92C3C029A00A4013C /* CatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93E82C3C029A00A4013C /* CatListView.swift */; };
+		FBDC93ED2C3C033500A4013C /* CatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93EC2C3C033500A4013C /* CatDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		FBDC93E02C3BFA7300A4013C /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FBDC93E32C3C011B00A4013C /* CatResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatResponse.swift; sourceTree = "<group>"; };
 		FBDC93E62C3C018200A4013C /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
+		FBDC93E82C3C029A00A4013C /* CatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatListView.swift; sourceTree = "<group>"; };
+		FBDC93EC2C3C033500A4013C /* CatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,10 +93,28 @@
 		FBDC93E52C3C016F00A4013C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FBDC93EB2C3C032100A4013C /* Detail */,
+				FBDC93EA2C3C031800A4013C /* Master */,
 				FBDC93D22C3BDA4900A4013C /* ContentView.swift */,
 				FBDC93E62C3C018200A4013C /* CatModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FBDC93EA2C3C031800A4013C /* Master */ = {
+			isa = PBXGroup;
+			children = (
+				FBDC93E82C3C029A00A4013C /* CatListView.swift */,
+			);
+			path = Master;
+			sourceTree = "<group>";
+		};
+		FBDC93EB2C3C032100A4013C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FBDC93EC2C3C033500A4013C /* CatDetailView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,8 +191,10 @@
 				FBDC93D32C3BDA4900A4013C /* ContentView.swift in Sources */,
 				FBDC93DF2C3BEB9C00A4013C /* ViewModel.swift in Sources */,
 				FBDC93E42C3C011B00A4013C /* CatResponse.swift in Sources */,
+				FBDC93ED2C3C033500A4013C /* CatDetailView.swift in Sources */,
 				FBDC93E12C3BFA7300A4013C /* Network.swift in Sources */,
 				FBDC93D12C3BDA4900A4013C /* CatFactsApp.swift in Sources */,
+				FBDC93E92C3C029A00A4013C /* CatListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
