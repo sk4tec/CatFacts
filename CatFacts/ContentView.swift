@@ -55,7 +55,7 @@ struct ContentView: View {
             }
             List {
                 ForEach(vm.cats) { cat in
-                    Text(cat.breed)
+                    ExtractedView(cat: cat)
                 }
             }
         }
@@ -68,4 +68,16 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+struct ExtractedView: View {
+    let cat: CatModel
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(cat.breed)
+                .font(.title3)
+            Text(cat.coat)
+        }
+    }
 }
