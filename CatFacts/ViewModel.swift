@@ -12,9 +12,8 @@ class ViewModel: ObservableObject {
     @Published var cats = [CatModel]()
     @Published var page = ""
 
-    // MARK: State
-    var next: String?
-    var previous: String?
+    // MARK: Services
+    let network = Network()
 
     public init() {
         self.page = "https://catfact.ninja/breeds?page=0"
@@ -23,46 +22,21 @@ class ViewModel: ObservableObject {
     @MainActor
     func load() async {
         do {
-            self.cats = try await getCats(urlPage: page)
+            self.cats = try await network.getCats(urlPage: page)
         } catch {
             print("Error \(error)")
         }
     }
 
     func getPrevious() async {
-        guard let previous = previous else { return }
-        do {
-            self.cats = try await getCats(urlPage: previous)
-        } catch {
-            print("Error \(error)")
+        if let results = await network.getPrevious() {
+            self.cats = results
         }
     }
 
     func getNext() async {
-        guard let next = next else { return }
-        do {
-            self.cats = try await getCats(urlPage: next)
-        } catch {
-            print("Error \(error)")
+        if let results = await network.getNext() {
+            self.cats = results
         }
-    }
-
-    func getCats(urlPage: String) async throws -> [CatModel] {
-        guard let url = URL(string: urlPage) else { return [] }
-
-        let (data, response) = try await URLSession.shared.data(from: url)
-
-        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { return [] }
-
-        let jsonDecoder = JSONDecoder()
-        let catFactsResponse = try jsonDecoder.decode(CatFactResponse.self, from: data)
-        let cats = catFactsResponse.data.map { cat in
-            CatModel(breed: cat.breed, country: cat.country, origin: cat.origin, coat: cat.coat, pattern: cat.pattern)
-        }
-        
-        self.next = catFactsResponse.nextPageURL
-        self.previous = catFactsResponse.prevPageURL
-
-        return cats
     }
 }

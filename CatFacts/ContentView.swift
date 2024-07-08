@@ -44,11 +44,14 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Button("Next") {
-                Task { await vm.getNext() }
-            }
-            Button("Previous") {
-                Task { await vm.getPrevious() }
+            HStack {
+                Button("Previous") {
+                    Task { await vm.getPrevious() }
+                }
+                Spacer()
+                Button("Next") {
+                    Task { await vm.getNext() }
+                }
             }
             List {
                 ForEach(vm.cats) { cat in
