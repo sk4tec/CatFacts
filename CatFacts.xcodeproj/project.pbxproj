@@ -11,6 +11,7 @@
 		FBDC93D32C3BDA4900A4013C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93D22C3BDA4900A4013C /* ContentView.swift */; };
 		FBDC93D52C3BDA4A00A4013C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBDC93D42C3BDA4A00A4013C /* Assets.xcassets */; };
 		FBDC93D82C3BDA4A00A4013C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBDC93D72C3BDA4A00A4013C /* Preview Assets.xcassets */; };
+		FBDC93DF2C3BEB9C00A4013C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDC93DE2C3BEB9C00A4013C /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		FBDC93D22C3BDA4900A4013C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FBDC93D42C3BDA4A00A4013C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FBDC93D72C3BDA4A00A4013C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FBDC93DE2C3BEB9C00A4013C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,9 @@
 		FBDC93CF2C3BDA4900A4013C /* CatFacts */ = {
 			isa = PBXGroup;
 			children = (
-				FBDC93D02C3BDA4900A4013C /* CatFactsApp.swift */,
 				FBDC93D22C3BDA4900A4013C /* ContentView.swift */,
+				FBDC93D02C3BDA4900A4013C /* CatFactsApp.swift */,
+				FBDC93DE2C3BEB9C00A4013C /* ViewModel.swift */,
 				FBDC93D42C3BDA4A00A4013C /* Assets.xcassets */,
 				FBDC93D62C3BDA4A00A4013C /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBDC93D32C3BDA4900A4013C /* ContentView.swift in Sources */,
+				FBDC93DF2C3BEB9C00A4013C /* ViewModel.swift in Sources */,
 				FBDC93D12C3BDA4900A4013C /* CatFactsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
