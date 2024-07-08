@@ -17,10 +17,12 @@ struct CatMasterView: View {
                     Button("Previous") {
                         Task { await vm.getPrevious() }
                     }
+                    .disabled(vm.previous)
                     Spacer()
                     Button("Next") {
                         Task { await vm.getNext() }
                     }
+                    .disabled(vm.next)
                 }
                 List {
                     ForEach(vm.cats) { cat in
