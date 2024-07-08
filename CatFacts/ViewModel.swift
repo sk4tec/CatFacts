@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class ViewModel: ObservableObject {
     // MARK: Published
     @Published var cats = [CatModel]()
